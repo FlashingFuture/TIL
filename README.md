@@ -12,6 +12,6 @@
 ---
 ### Python
   - [Why Python?](https://github.com/FlashingFuture/TIL/blob/master/organized/whyPython.md)
-  - [Python datatypes (작업중)](https://github.com/FlashingFuture/TIL/blob/master/organized/python_datatype)
+  - [Python built-in Types](https://docs.python.org/3/library/stdtypes.html#textseq)
 ---
 ### odds and ends 
