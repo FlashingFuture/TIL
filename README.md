@@ -12,6 +12,6 @@
 ---
 ### Python
   - [Why Python?](https://github.com/FlashingFuture/TIL/blob/master/organized/whyPython.md)
-  - [Python built-in Types](https://docs.python.org/3/library/stdtypes.html#textseq)
+  - [Python built-in Types](https://docs.python.org/3/library/stdtypes.html)
 ---
 ### odds and ends 
