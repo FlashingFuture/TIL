@@ -12,6 +12,10 @@
 ---
 ### Python
   - [Why Python?](https://github.com/FlashingFuture/TIL/blob/master/organized/whyPython.md)
+  <details>
+  <summary>Python basics</summary>
   - [Python built-in Types](https://docs.python.org/3/library/stdtypes.html)
+  </details>
+  
 ---
 ### odds and ends 
