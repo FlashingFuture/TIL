@@ -35,6 +35,7 @@ git status
 git log
 ```
 - 커밋된 내용을 확인
+- ```git log --oneline```을 통해 더 간략화된 출력 가능
     
     *git 저장소 안에 또 다른 git 저장소는 존재할 수 없음
     
