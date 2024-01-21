@@ -14,7 +14,11 @@
   - [Why Python?](https://github.com/FlashingFuture/TIL/blob/master/organized/whyPython.md)
   <details>
   <summary>Python basics</summary>
+
+  - [Python basic all-in one](https://github.com/FlashingFuture/TIL/blob/master/organized/python_basic.md)
   - [Python built-in Types](https://docs.python.org/3/library/stdtypes.html)
+  - [Python operators](https://docs.python.org/3/library/operator.html)
+  - [Python built-in functions](https://docs.python.org/3/library/functions.html)
   </details>
   
 ---
