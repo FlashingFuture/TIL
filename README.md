@@ -19,6 +19,8 @@
   - [Python built-in Types](https://docs.python.org/3/library/stdtypes.html)
   - [Python operators](https://docs.python.org/3/library/operator.html)
   - [Python built-in functions](https://docs.python.org/3/library/functions.html)
+  - [Python built-in exceptions](https://docs.python.org/3/library/exceptions.html)
+  
   </details>
   
 ---

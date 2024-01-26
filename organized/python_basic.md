@@ -472,3 +472,513 @@ print(list(enumerate(cities)))
 
 # [(0, '서울'), (1, '대전'), (2, '광주'), (3, '구미'), (4, '부울경')]
 ```
+
+## Data Structure
+데이터를 효과적으로 관리할 수 있는 구조
+- 각 데이터 구조(str, list, dict, etc..)의 **메서드** 호출을 통해 다양한 기능을 활용
+## method
+객체에 속한 함수
+- 객체의 상태 조작 / 동작 수행
+- 파이썬에서 클래스 내부에 정의됨
+  - 클래스는 타입을 표현하는 방법
+```python
+print(help(list)) # list 자료형에 대한 도움말
+```
+- help 함수를 통해 파이썬 내장 클래스(내장 자료형)의 메서드 확인 가능
+```python
+a = [1, 2, 3] # list type a 선언
+a.append(4) # 객체.메서드() 형태로 메서드 호출
+```
+```객체(클래스).메서드()``` 의 형태로 사용됨
+
+[Python built-in types](https://docs.python.org/3/library/stdtypes.html#str)
+- 모든 파이썬 내장 클래스(자료형)들의 메서드 확인 가능
+
+
+## sequence data structure
+### string
+**문자열 탐색 / 검증 메서드** 
+|        메서드      	|                                         설명                                        	|
+|:------------------:	|:-----------------------------------------------------------------------------------:	|
+|      s.find(x)     	|     x의   첫 번째 위치를 반환. 없으면,   -1을 반환                                  	|
+|      s.index(x)    	|     x의   첫 번째 위치를 반환. 없으면,   오류 발생                                  	|
+|     s.isalpha()    	|     알파벳 문자 여부      *단순 알파벳이 아닌 유니코드 상 Letter (한국어도 포함)    	|
+|     s.isupper()    	|     대문자 여부                                                                     	|
+|     s.islower()    	|     소문자   여부                                                                   	|
+|     s.istitle()    	|     타이틀   형식 여부                                                              	|
+
+**문자열 조작 메서드**
+- 문자열은 불변이기 때문에 새 문자열을 반환함
+- [, count] 와 같은 표기는 선택 인자를 나타내는 것으로, [Extended Backus-Naur form](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_formview=msvc-170)에 따름(Python 문법이 아님!)
+
+|                  메서드                 	|                                              설명                                            	|
+|:---------------------------------------:	|:--------------------------------------------------------------------------------------------:	|
+|       s.replace(old,   new[,count])     	|     바꿀 대상 글자를 새로운 글자로 바꿔서 반환                                               	|
+|             s.strip([chars])            	|     공백이나 특정 문자를 제거                                                                	|
+|     s.split(sep=None,   maxsplit=-1)    	|     공백이나 특정 문자를 기준으로 분리                                                       	|
+|       'separator'.join([iterable])      	|     구분자로 iterable을   합침                                                               	|
+|              s.capitalize()             	|     가장   첫 번째   글자를   대문자로   변경                                                	|
+|                 s.title()               	|     문자열 내 띄어쓰기 기준으로 각 단어의 첫 글자는 대문자로,      나머지는 소문자로 변환    	|
+|                 s.upper()               	|     모두   대문자로 변경                                                                     	|
+|                 s.lower()               	|     모두   소문자로 변경                                                                     	|
+|               s.swapcase()              	|     대↔소문자 서로 변경                                                                      	|
+
+### list
+**리스트 값 추가 / 삭제 메서드**
+
+|          메서드         	|                                                   설명                                                  	|
+|:-----------------------:	|:-------------------------------------------------------------------------------------------------------:	|
+|        **L.append(x)**      	|     리스트   마지막에 항목 x를   추가                                                                   	|
+|        L.extend(m)      	|     Iterable m의   모든 항목들을 리스트 끝에 추가 (+=과   같은 기능)                                    	|
+|     L.insert(i,   x)    	|     리스트   인덱스 i에 항목 x를 삽입                                                                   	|
+|        L.remove(x)      	|     리스트   가장 왼쪽에 있는 항목(첫 번째)   x를   제거     항목이 존재하지 않을 경우,   ValueError    	|
+|          **L.pop()**        	|     리스트   가장 오른쪽에 있는 항목(마지막)을   반환 후 제거                                           	|
+|         **L.pop(i)**        	|     리스트의 인덱스 i에   있는 항목을 반환 후 제거                                                      	|
+|         L.clear()       	|     리스트의 모든 항목 삭제                                                                             	|
+
+
+**리스트 탐색 / 정렬 메서드**
+|               문법              	|                                   설명                                 	|
+|:-------------------------------:	|:----------------------------------------------------------------------:	|
+|     L.index(x,   start, end)    	|     리스트에   있는 항목 중 가장 왼쪽에 있는 항목 x의 인덱스를 반환    	|
+|            L.reverse()          	|     리스트의 순서를 역순으로 변경 (정렬 X)|
+|             L.sort()            	|     리스트를 정렬 (매개변수   이용가능)                                	|
+|            L.count(x)           	|     리스트에서 항목   x의 개수를 반환                                  	|
+
+
+## Copy
+파이썬에서는 데이터 분류(type)에 따라 복사 유형이 달라짐
+
+### Assignment(할당)
+```python
+original_list = [1, 2, 3]
+copied_list = original_list
+print(original_list, copied_list) # [1, 2, 3] [1, 2, 3]
+
+copied_list[0] = 'Py'
+print(original_list, copied_list) # ['Py', 2, 3] ['Py', 2, 3]
+```
+할당(=) 연산자를 통해 객체에 대한 객체 참조를 복사함
+### Shallow copy(얕은 복사)
+```python
+original_list = [1, 2, 3]
+copied_list = original_list[:]  # slicing을 통해 새로운 객체를 복사하여 생성
+
+copied_list[0] = 'Py'
+print(original_list, copied_list) # [1, 2, 3] ['Py', 2, 3]
+```
+생성된(복사된) 객체는 원본 객체와 독립적으로 존재함
+```python
+original_list = [1, 2, [1, 2]]
+copied_list = original_list[:]
+
+copied_list[2][0] = 'Py'
+print(original_list, copied_list) # [1, 2, ['Py', 2]] [1, 2, ['Py', 2]]
+```
+- 객체 내부에 변경 가능한 객체가 또 존재할 경우 그 객체에 대한 객체 참조를 복사(할당)함
+### Deep copy(깊은 복사)
+```python
+import copy
+
+original_list = [1, 2, [1, 2]]
+deep_copied_list = copy.deepcopy(original_list)
+
+deep_copied_list[2][0] = 'Py'
+print(original_list, deep_copied_list) # [1, 2, [1, 2]] [1, 2, ['Py', 2]]
+```
+- 내부에 중첩된 객체까지 새로운 객체를 참조하도록 생성(복사)함
+
+## Non-sequence Data Structure
+
+### set
+**항목 추가 / 제거 메서드**
+|           메서드          	|                                설명                               	|
+|:-------------------------:	|:-----------------------------------------------------------------:	|
+|          s.add(x)         	|     세트 s에 항목   x를 추가. 이미   x가 있다면 변화 없음         	|
+|          s.clear()        	|     세트 s의   모든 항목을   제거                                 	|
+|         s.remove(x)       	|     세트 s에서   항목 x를 제거. 항목   x가 없을 경우 Key error    	|
+|           s.pop()         	|     세트 s에서   랜덤하게 항목을 반환하고,   해당 항목을 제거     	|
+|        s.discard(x)       	|     세트 s에서   항목 x를 제거                                    	|
+|     s.update(iterable)    	|     세트 s에   다른 iterable 요소를   추가                        	|
+
+**집합 메서드**
+|              메서드            	|                                         설명                                       	|         연산자        	|
+|:------------------------------:	|:----------------------------------------------------------------------------------:	|:---------------------:	|
+|      set1.difference(set2)     	|        set1에는 들어있지만 set2에는      없는   항목으로 세트를 생성 후 반환       	|      set1   – set2    	|
+|     set1.intersection(set2)    	|           set1과 set2 모두   들어있는 항목으로      세트를   생성 후 반환          	|     set1   & set 2    	|
+|       set1.issubset(set2)      	|               set1의 항목이 모두 set2에 들어있으면      True를   반환              	|     set1   <= set2    	|
+|      set1.issuperset(set2)     	|               set1가 set2의   항목을 모두 포함하면      True를   반환              	|     set1   >= set2    	|
+|         set1.union(set2)       	|     set1 또는 set2에(혹은   둘 다) 들어있는      항목으로   세트를 생성 후 반환    	|     set1   \| set2    	|
+
+### dictionary
+**값 추가 / 반환 / 제거 메서드**
+|            메서드           	|                                                                                설명                                                                              	|
+|:---------------------------:	|:----------------------------------------------------------------------------------------------------------------------------------------------------------------:	|
+|           D.clear()         	|     딕셔너리 D의   모든 키/값 쌍을 제거                                                                                                                          	|
+|           **D.get(k)**          	|     키 k에   연결된 값을 반환 (키가 없으면 None을 반환)                                                                                                          	|
+|         **D.get(k,   v)**       	|     키 k에   연결된 값을 반환하거나 키가 없으면 기본 값으로 v를 반환                                                                                             	|
+|           **D.keys()**          	|     딕셔너리 D의   키를 모은 객체를 반환                                                                                                                         	|
+|          **D.values()**         	|     딕셔너리 D의   값을 모은 객체를 반환                                                                                                                         	|
+|           **D.items()**         	|     딕셔너리 D의   키/값 쌍을 모은 객체를 반환                                                                                                                   	|
+|           D.pop(k)          	|     딕셔너리 D에서   키 k를 제거하고 연결됐던 값을 반환 (없으면   오류)                                                                                          	|
+|         D.pop(k,   v)       	|     딕셔너리 D에서   키 k를 제거하고 연결됐던 값을 반환 (없으면   v를 반환)                                                                                      	|
+|        D.setdefault(k)      	|     딕셔너리 D에서   키 k와 연결된 값을 반환                                                                                                                     	|
+|     D.setdefault(k,   v)    	|     딕셔너리 D에서   키 k와 연결된 값을 반환     k가   D의 키가 아니면 값 v와   연결한 키 k를 D에   추가하고 v를 반환                                            	|
+|        D.update(other)      	|     other 내 각 키에 대해 D에   있는 키면 D에 있는 그 키의 값을 other에 있는 값으로 대체.     other에 있는 각 키에 대해 D에   없는 키면 키/값 쌍을 D에   추가    	|
+
+## Hash table
+해시 함수를 사용해 변환한 값을 색인(index)로 key와 value를 저장하는 자료구조
+- 해시(Hash) : 임의의 크기의 데이터를 고정된 크기의 값으로 바꾸는 것
+- 해시 함수 : 임의의 길이의 데이터를 입력받아 고정된 길이의 데이터(해시 값)을 출력하는 함수
+- 데이터 검색을 더 빠르게 함
+
+### hash table in set / dictionary
+set의 요소 / dict의 key는 해시 함수를 통해 해시 값으로 변환되어 해시 테이블에 저장됨
+- set의 요소가 정수인 경우 그 값을 그대로 해시 값으로 사용
+- 문자열은 가변적인 길이 때문에 해시 값이 실행 시마다 다르게 계산됨
+- set.pop() is **arbitrary**, NOT random
+
+hash table의 값은 변해서는 안됨(무결성 유지)
+- 가변 데이터(list)는 hash할 수 없음
+
+## Procedural Programming
+절차 지향 프로그래밍 : 프로그램을 '데이터' / '절차' 로 구성하는 프로그래밍 패러다임
+- 함수(절차) 호출과 코드의 흐름이 중요
+- Software Crisis : HW의 발전과 함께 계산용량 / 문제의 복잡성이 급격히 커짐에 따라 절차지향 프로그래밍에 문제 발생
+(절차 안에 하나라도 문제가 있으면 절차 전체가 동작하지 않음)
+
+## Object Oriented Programming
+객체 지향 프로그래밍 : 데이터와 해당 데이터 조작 메서드를 하나의 객체로 묶어 관리하는 프로그래밍 패러다임
+
+- **객체 지향은 절차 지향과 대조되는 개념이 아닌** 절차 지향을 기반으로 객체라는 개념을 도입해 상속 / 코드 재사용성 / 유지보수성 등에서 이점을 갖는 패러다임임
+
+## Class
+파이썬에서 자료형(type)을 표현하는 방법
+```python
+class str(Sequence[str]):
+    @overload
+    def __new__(cls, object: object = ...) -> Self: ...
+    @overload
+    def __new__(cls, object: ReadableBuffer, encoding: str = ..., errors: str = ...) -> Self: ...
+    @overload
+    def capitalize(self: LiteralString) -> LiteralString: ...
+    @overload
+    ...
+```
+
+## Object
+클래스에서 정의한 내용을 메모리에 할당한 것으로 **속성(변수)**과 **행동(메서드)**으로 구성된 모든 것
+- 넓은 개념으로 메모리에 할당된다면 모두 객체라고 할 수 있음
+- 인스턴스 : 클래스로 만든 객체
+  - 하나의 객체는 특정 자료형(type)의 인스턴스임
+
+객체의 특징
+- 타입(type) : 어떤 연산자(operator)와 조작(method)가 가능한가?
+- 속성(attribute) : 어떤 상태(데이터)를 가지는가?
+- 조작법(method) : 어떤 행위(함수)를 할 수 있는가?
+
+```python
+class Person:
+    # attribute
+    blood_color = 'red'
+    # constructor function
+    def __init__(self, name):
+        self.name = name  # instance variable
+
+    def breathing(self):
+        return f'{self.name} is breathing.'
+    
+# creating instance
+human1 = Person('Kim')
+
+# calling method
+print(human1.breathing()) # Kim is breathing
+
+# access to attribute 
+print(human1.blood_color) # red
+
+# calling method
+print(human1.breathing())
+```
+생성자 함수(constructor function) : ```__init__```
+- 객체를 생성할 때마다 자동으로 호출되어 객체를 초기화
+
+인스턴스 변수 : ```self.~```
+- 인스턴스마다 별도로 유지되는 변수
+
+인스턴스와 클래스 간의 이름공간(namespace)
+- 인스턴스를 만들 시 인스턴스 객체에 독립적인 이름 공간 생성
+- 특정 속성 접근 시 인스턴스 객체 내부 -> 클래스 내부 순으로 탐색
+- 독립적인 이름공간을 이용해 클래스와 인스턴스는 다른 객체들과의 상호작용에서 충돌 / 영향 없이 독립적으로 동작할 수 있음
+
+클래스 변수
+```python
+class Circle():
+  pi = 3.14
+
+  def __init__(self, r):
+    self.r = r
+
+c1 = Circle(5)
+c2 = Circle(10)
+  ...
+```
+```python
+c2.pi = 5
+print(Circle.py)  # 3.14
+print(c1.py)  # 3.14
+print(c2.py)  # 5
+```
+- 클래스 전체에 적용되는 변수
+- ```클래스명.클래스변수``` 형식으로만 변경 가능
+
+### instance method
+인스턴스 메서드 : 인스턴스의 상태를 조작하거나 동작을 수행
+```python
+class Myclass():
+
+  def instance_method(self, arg1, ...):
+    pass
+```
+- 반드시 첫 번째 매개변수로 인스턴스 자신(self)를 전달받음
+
+### constructor method
+생성자 메서드 : ```__init__``` 매직 메서드로 객체가 생성될 때 자동으로 호출되는 메서드
+- 객체들의 초기값을 설정
+
+### class method
+클래스 메서드 : 클래스가 호출하는 메서드
+- 클래스 변수 조작 / 클래스 레벨에서의 동작 수행
+```python
+class Myclass:
+
+  @classmethod
+  def class_method(cls, arg1, ...)
+    pass
+```
+- @classmethod 데코레이터를 사용해 정의
+- 호출 시 첫 번째 인자로 호출하는 클래스(cls) 전달
+- 상속 시 해당 클래스만 조작할 수 있도록 이용(```클래스명.메서드``` 사용 시 상속된 클래스 때문에 기능 이용이 안됨)
+
+### static method
+정적 메서드 : 클래스, 인스턴스와 관계없이 동작하는 메서드
+- @staticmethod 데코레이터를 사용하여 정의
+- 필수 매개변수가 없음 : 객체 상태 / 클래스 상태를 수정하지 않고 기능(동작)만을 위한 메서드
+
+**각 메서드는 OOP 패러다임에 따라 목적에 맞게 설계된 것이기에 목적에 맞는 메서드만 사용해야 함**
+
+### magic method
+특정 상황에 자동으로 호출되는 메서드
+- ```__```(Double underscore)가 있는 메서드는 특수 동작을 위해 만들어진 메서드
+
+### decorator
+다른 함수의 코드를 유지한 채 수정 / 확장하기 위해 사용되는 함수
+```python
+def my_decorator(func):
+    def wrapper():
+        # 함수 실행 앞에 수행할 작업
+        print('before function')
+        # 함수 호출
+        result = func()
+        # 함수 실행 뒤에 수행할 작업
+        print('after function')
+        return result
+
+    return wrapper
+```
+```python
+@my_decorator
+def my_function():
+    print('func()')
+
+my_function()
+"""
+before function
+func()
+after function
+"""
+```
+
+## Inheritance
+상속 : 기존 클래스의 속성과 메서드를 물려받아 새 하위 클래스를 생성하는 것
+- 코드 재사용성을 늘려 중복된 코드를 줄일 수 있음
+- 부모 / 자식 클래스 간 계층 구조를 형성해 더 구체적인 클래스를 만들 수 있음
+- 문제가 발생할 경우 해당 클래스만 수정하면 되어 유지 보수가 용이함
+```python
+class Stick:
+    def __init__(self, damage):
+        self.damage = damage
+
+    def attack(self):
+        print(f'damage : {self.damage}')
+
+class Axe(Stick):
+    def __init__(self, stick_damage, rock_damage):
+        self.damage = stick_damage + rock_damage
+```
+```python
+a = Stick(10)
+b = Axe(10, 30)
+a.attack()
+b.attack()
+"""
+damage : 10
+damage : 40
+"""
+```
+
+```python
+super()
+```
+부모 클래스 객체를 반환하는 내장 함수
+- ```super()```를 사용해 다중 상속
+
+### multiple inheritance
+다중 상속 : 둘 이상의 상위 클래스로부터 상속받는 것
+
+다이아몬드 문제(diamond problem)
+- 클래스 B, C가 A에서 상속되고, 클래스 D가 B, C에서 상속될 때 상속 순서의 문제
+- 파이썬에서는 MRO(Method Resoulution Order) 알고리즘 사용
+    - 깊이 우선, 왼쪽에서 오른쪽으로 중복 없이 클래스를 검색
+    - ```super()```가 MRO를 기반으로 호출될 메서드를 결정하여 자동으로 호출
+
+```python
+class ParentA:
+    def __init__(self):
+        self.value_a = 'ParentA'
+
+    def show_value(self):
+        print(f'Value from ParentA: {self.value_a}')
+
+
+class ParentB:
+    def __init__(self):
+        self.value_b = 'ParentB'
+
+    def show_value(self):
+        print(f'Value from ParentB: {self.value_b}')
+
+
+class Child(ParentA, ParentB):
+    def __init__(self):
+        super().__init__()  # self.value_a = 'ParentA'
+        self.value_c = 'Child'
+
+    def show_value(self):
+        super().show_value()    # Value from ParentA: ParentA
+        print(f'Value from Child: {self.value_c}')  # Value from Child: Child
+
+
+child = Child()
+child.show_value()
+```
+
+super 호출 시 call stack
+```python
+class A:
+    def __init__(self):
+        print('A Constructor')
+
+
+class B(A):
+    def __init__(self):
+        super().__init__()
+        print('B Constructor')
+
+
+class C(A):
+    def __init__(self):
+        super().__init__()
+        print('C Constructor')
+
+
+class D(B, C):
+    def __init__(self):
+        super().__init__()
+        print('D Constructor')
+
+
+obj = D()
+
+print(D.mro())
+"""
+A Constructor
+C Constructor
+B Constructor
+D Constructor
+[<class '__main__.D'>, 
+<class '__main__.B'>, 
+<class '__main__.C'>, 
+<class '__main__.A'>, 
+<class 'object'>]
+"""
+```
+- ```mro()``` : 해당 인스턴스가 어떤 부모 클래스를 가지는지 확인하는 메서드
+- super()는 MRO 상에서 다음으로 탐색할 클래스의 인스턴스로, 코드 재사용성을 늘려줌
+
+
+## Errors and Exceptions
+버그(bug) : 소프트웨어에서 발생하는 오류 또는 결함
+디버깅(debugging) : 버그를 찾아내고 수정하는 과정, 프로그램의 오작동 원인을 식별하여 수정하는 작업 
+- print 활용(코드를 bisection으로 나누기), 개발환경 기능 활용, python tutor 활용
+
+### Error
+에러 : 프로그램 실행 중 발생하는 예외 상황
+Syntax Error : 구문(문법)이 올바르지 않은 경우 발생
+  - Invalid syntax, assign to literal, EOL(End of Line, EOF(End of File))
+Exception : 프로그램을 실행했을 때 감지되는 에러<br>
+[Pyhon Built-in Exceptions](https://docs.python.org/3/library/exceptions.html)
+- Built-in Exceptions : 파이썬에서 이미 정의된 예외 상황의 처리를 위해 사용되는 클래스
+- ZeroDivisionError, NameError, TypeError, ValueError, IndexError, KeyError, ModuleNotFoundError, ImportError, KeyboardInterrupt, 
+IndentationError 등
+
+### User-defined Exception
+```python
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print('0으로 나눌 수 없습니다.')
+
+# 0으로 나눌 수 없습니다.
+```
+try-except 구조를 사용해 예외 처리
+- try 블록 : 예외가 발생할 수 있는 코드
+- except 블록 : 예외가 발생했을 때 처리할 코드
+
+- 내장 예외 클래스는 상속 계층구조를 가지기 때문에 반드시 하위 클래스를 먼저 확인하는 구조로 작성해야 함
+
+as
+```python
+my_list = []
+
+try:
+    number = my_list[3]
+except IndexError as error:
+  print(f'{error} 발생')
+
+# list index out of range 발생
+```
+
+### EAFP & LBYL
+```python
+my_dict = {}
+# try-except
+try:
+    result = my_dict['a']
+    print(result)
+except KeyError:
+    print('Key가 존재하지 않습니다.')
+
+# if-else
+if 'key' in my_dict:
+    result = my_dict['a']
+    print(result)
+else:
+    print('Key가 존재하지 않습니다.')
+```
+EAFP(Easier to Ask for Forgiveness than Permission)
+- 예외처리를 주임으로 코드를 작성하는 방식(try-except)
+- 예외 상황을 예측하기 어려울 경우 유용
+LBYL(Look Before You Leap)
+- 값 검사를 중심으로 코드를 작성하는 방식(if-else)
+- 코드의 예측 가능성이 높지만 더 길고 복잡해질 수 있음
