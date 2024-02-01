@@ -384,6 +384,7 @@ else:         # 위의 조건이 모두 False였을 경우 실행
 
 ### Loop Statement
 반복문 : 주어진 코드 블록을 여러 번 반복해서 실행하는 구문
+
 for
 ```python
 iterable = ['A', 'B', 'C']
