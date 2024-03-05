@@ -1,27 +1,22 @@
 N = int(input())
 have = list(map(int, input().split()))
+have.sort()
+num_of_cards = {}
+for h in have:
+    if h not in num_of_cards:
+        num_of_cards[h] = 1
+    else:
+        num_of_cards[h] += 1
+
 M = int(input())
 do_have = list(map(int, input().split()))
-have.sort()
 for n in do_have:
     start = 0
     end = N - 1
-    cnt = 0
     while start <= end:
         mid = (start + end) // 2
         if have[mid] == n:
-            temp = mid
-            while temp >= 0 and have[temp] == n:
-                cnt += 1
-                temp -= 1
-
-            cnt -= 1
-            temp = mid
-            while temp < len(have) and have[temp] == n:
-                cnt += 1
-                temp += 1
-
-            print(cnt, end=' ')
+            print(num_of_cards[n], end=' ')
             break
 
         elif have[mid] < n:
@@ -30,5 +25,5 @@ for n in do_have:
         else:
             end = mid - 1
 
-    if cnt == 0:
+    if have[mid] != n:
         print(0, end=' ')
