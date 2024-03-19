@@ -1,16 +1,29 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+path = []
+res_list = []
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def backtrack(lev):
+    if lev == N:
+        temp = P[0][path[0]] / 100
+        for i in range(1, N):
+            temp *= P[i][path[i]] / 100
+
+        res_list.append(temp)
+        return
+
+    for i in range(N):
+        if i in path: continue
+        path.append(i)
+        backtrack(lev + 1)
+        path.pop()
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+T = int(input())
+for tc in range(1, T + 1):
+    N = int(input())
+    P = [list(map(int, input().split())) for _ in range(N)]
+    res_list = []
+    backtrack(0)
+    res = max(res_list)
+    print(f'#{tc} {res}')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
