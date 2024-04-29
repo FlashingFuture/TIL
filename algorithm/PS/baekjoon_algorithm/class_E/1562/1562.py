@@ -13,33 +13,29 @@ DIV_NUM = int(1e9)
 # 1~9의 출발점에 대해, count 와 위치를 저장해주면서 가서
 # 끝까지 도달한 경우 count 를 확인해 0~9가 다 나온 경우 더해주는 로직을 짜면
 # 2^100 * 10 정도 나와서 시간초과가 날 것 같다
+
+
 # 결국 풀이를 찾아보았다(비트필드를 이용한 DP 개념 검색)
 # DP를 사용하되, 배열을 3차원으로 선언하여 방문했는지 안했는지를
 # 10비트짜리 비트필드를 dp로 나누어 저장해줌으로써 시간 제한 내에 풀이할 수 있다
 # 이 경우 최대 시간복잡도는 100 * 10 * 2^10(1000) = 1000000
-DP = [[[0] * (1 << 10) for _ in range(10)] for __ in range(N)]
-for i in range(1, 10):  # 첫 자릿수 저장
-    print(1 << i)
+DP = [[[0] * (1 << 10) for _ in range(10)] for __ in range(N + 1)]
+for i in range(1, 10):  # 첫 자릿수 저장(첫 자릿수가 0인 경우는 없음)
     DP[0][i][1 << i] = 1
 
 for i in range(1, N):
-    # 0에 대한 dp
-    for k in range(1 << 10 - 1):
-        if DP[i - 1][1][k]:
-            DP[i][0][k | (1 << 0)] = DP[i - 1][8][k]
-    # 9에 대한 dp
-    for k in range(1 << 10 - 1):
-        if DP[i - 1][8][k]:
-            DP[i][9][k | (1 << 9)] = DP[i - 1][8][k]
-    # 1~8에 대한 dp
-    for j in range(1, 9):
-        for k in range(1 << 10 - 1):
-            DP[i][j][k | (1 << j)] = DP[i - 1][j - 1][k] + DP[i - 1][j + 1][k]
+    # 이전 값보다 커지는 DP
+    for j in range(9):
+        for k in range(1 << 10):
+            DP[i][j + 1][k | 1 << (j + 1)] += (DP[i - 1][j][k] % DIV_NUM)
+
+    # 이전 값보다 작아지는 DP
+    for j in range(1, 10):
+        for k in range(1 << 10):
+            DP[i][j - 1][k | 1 << (j - 1)] += (DP[i - 1][j][k] % DIV_NUM)
 
 res = 0
 for i in range(10):
-    for k in range(1024):
-        if DP[N - 1][i][k]:
-            print(k)
+    res += (DP[N - 1][i][(1 << 10) - 1] % DIV_NUM)
 
 print(res % DIV_NUM)
