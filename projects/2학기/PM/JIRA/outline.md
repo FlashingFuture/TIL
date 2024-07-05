@@ -42,3 +42,4 @@ JQL Dates
 Issue Tracking에 Jira 활용
 - Repo. Hosting, Code review는 Git(Github)
 - GitLab, Github에 Jira 이슈를 연결할 수 있음
+
