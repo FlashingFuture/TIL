@@ -1,0 +1,12 @@
+.header {
+  background-color: grey;
+  color: white;
+}
+
+.header h1 {
+  padding: 30px;
+}
+
+.main > div {
+  padding: 30px;
+}

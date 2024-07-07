@@ -1,6 +1,15 @@
-body {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
   margin: 0;
   padding: 0;
   min-width: 320px;
+  height: 100%;
+}
+
+body {
   min-height: 100vh;
 }

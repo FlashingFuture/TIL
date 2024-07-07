@@ -1,21 +1,22 @@
 import { useRef } from "react";
+import styles from "./TodoForm.module.css"
 
 
-function TodoForm({addTodo}) {
+function TodoForm({createTodo}) {
     const newTodo = useRef();
     const todoSubmit = (e) => {
         e.preventDefault();
-        addTodo(newTodo.current.value);
+        createTodo(newTodo.current.value);
         newTodo.current.value = "";
     }
 
 
     return (
         <div>
-            <form onSubmit={todoSubmit}>
-                <label htmlFor="getTodo">할 일 추가: </label>
+            <form className={styles.formWrapper} onSubmit={todoSubmit}>
+                <label htmlFor="getTodo">할 일 추가 : </label>
                 <input type="text" id="getTodo" ref={newTodo} />
-                <input type="submit" value="할 일 추가" />
+                <input className={styles.button} type="submit" value="+" />
             </form>
         </div>
     );
