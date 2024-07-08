@@ -38,9 +38,9 @@ function App() {
   
   return (
     <div>
-      <div className={styles.header}>
+      <header className={styles.header}>
         <h1>나의 Todo List</h1>
-      </div>
+      </header>
       <main className={styles.main}>
         <div>
           <TodoForm 

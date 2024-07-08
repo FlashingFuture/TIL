@@ -1,7 +1,8 @@
 import styles from './TodoItem.module.css';
+// import PropTypes from 'prop-types'
 
 
-function TodoItem({ todo, index, deleteTodo }) {
+function TodoItem({ todo, index, deleteTodo, }) {
     return (
         <div className={styles.card}>
             <div>
@@ -14,5 +15,10 @@ function TodoItem({ todo, index, deleteTodo }) {
         </div>
     )
 }
+// TodoItem.propTypes = {
+//     todo: PropTypes.object.isRequired,
+//     index: PropTypes.number.isRequired,
+//     deleteTodo: PropTypes.func.isRequired,
+// }
 
 export default TodoItem;

@@ -2,7 +2,7 @@ import { useRef } from "react";
 import styles from "./TodoForm.module.css"
 
 
-function TodoForm({createTodo}) {
+function TodoForm({ createTodo }) {
     const newTodo = useRef();
     const todoSubmit = (e) => {
         e.preventDefault();
@@ -21,5 +21,9 @@ function TodoForm({createTodo}) {
         </div>
     );
 }
+// TodoForm.propTypes = {
+//     createTodo: PropTypes.func.isRequired,
+// }
+
 
 export default TodoForm;
