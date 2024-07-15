@@ -1,0 +1,120 @@
+
+
+USER / USER_AUTH 분리
+- varchar을 key로 쓰면 속도가 느림(정수형 사용시 빠름)
+- 분리한 만큼 join해서 가져오는 경우에 속도가 느려짐
+
+
+unsigned int가 40억 정도의 범위를 쓰게 해주므로 이에 맞는 최적화
+
+lectrue - description : varchar -> text
+
+varchar과 text의 차이: varchar는 검색 속도가 빠름
+- 길이가 길면 text, 짧고 자주 검색하면 varchar(저장 위치가 다름)
+
+REST API
+- lecture 강의조회 최상위를 list로 사용해도 됨
+	- 구조적으로 올바르게
+
+- lecture 게시글 시간에 대해 상대시간을 고려해야함
+	- 세계표준시를 보내고 운영체제에서 해당 시간만큼 더해주도록 해야 함
+
+- 강의 공지사항 게시글 등록(Post):
+	- lectureId는 url에 존재하는 엔드포인트므로 body에서는 제거
+
+
+/* Button */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 16px 24px;
+gap: 8px;
+
+width: 118px;
+height: 54px;
+
+background: #2C2C2C;
+border: 1px solid #2C2C2C;
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Edit
+
+Keywords: pencil, change
+*/
+
+width: 16px;
+height: 16px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+left: 8.33%;
+right: 7.83%;
+top: 7.83%;
+bottom: 8.33%;
+
+border: 1.6px solid #F5F5F5;
+
+
+/* Button */
+
+width: 46px;
+height: 22px;
+
+/* Body Strong */
+font-family: 'Pretendard Variable';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+color: #F5F5F5;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+/* Description */
+
+width: 900px;
+height: 22px;
+
+/* Body Base */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 140%;
+/* or 22px */
+
+color: #757575;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
