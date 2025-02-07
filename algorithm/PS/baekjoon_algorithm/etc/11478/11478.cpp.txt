@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+#include <unordered_set>
+
+using namespace std;
+
+int main(void) {
+	string S;
+	cin >> S;
+
+	unordered_set<string> substrings;
+	// S.length()에 맞춰 모든 문자열을 unordered_set에 집어넣음
+	for (int i = 0; i < S.length(); i++)
+	{
+		for (int j = i; j < S.length(); j++)
+		{
+			substrings.insert(S.substr(i, j - i + 1));
+		}
+	}
+	cout << substrings.size();
+
+	return 0;
+}
