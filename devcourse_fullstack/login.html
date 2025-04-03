@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOGIN</title>
+  </head>
+  <body>
+    <div>
+        <h1>로그인</h1>
+        <form onsubmit="alert(
+            '로그인 시도 감지됨\n'
+            + 'ID: ' + document.getElementById('userId').value + '\n'
+            + 'PW: ' + document.getElementById('userPw').value
+        )">
+          <div>
+            <label>ID :</label>
+            <input type="text" id="userId" />
+          </div>
+          <div>
+            <label>PW :</label>
+            <input type="password" id="userPw" />
+          </div>
+        <div>
+            <input type="submit" value="로그인">
+        </div>
+    </div>
+    </form>
+  </body>
+</html>
